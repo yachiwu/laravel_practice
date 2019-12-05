@@ -45,11 +45,9 @@ class PostController extends Controller
     public function store(StorePost $request)
     {
         $validate_Data = $request->validated();
-        dd($validate_Data);
-        $blogPost = new BlogPost();
-        $blogPost->title = $request->input('title');
-        $blogPost->content = $request->input('content');
-        $blogPost->save();
+        // dd($validate_Data);
+        // mass assignment
+        $blogPost = BlogPost::create($validate_Data);
         $request->session()->flash('status','success');
         return redirect(route('posts.show',['post' =>$blogPost->id]));
         
