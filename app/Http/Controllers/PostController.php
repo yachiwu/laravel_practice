@@ -54,5 +54,25 @@ class PostController extends Controller
         //
     }
 
+    public function edit($id)
+    {
+        $post = BlogPost::findOrFail($id);
+        return view('post.edit',['post'=>$post]);
+        
+        //
+    }
+
+    public function update(StorePost $request ,$id)
+    {
+        $post = BlogPost::findOrFail($id);
+        $validate_Data = $request->validated();
+        $post->fill($validate_Data);
+        $post->save();
+        $request->session()->flash('status','update');
+        return redirect(route('posts.show',['post' =>$post->id]));
+        
+        //
+    }
+
    
 }
