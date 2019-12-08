@@ -5,6 +5,6 @@
         {{ csrf_field() }}
         {{method_field('PUT')}}
         @include('post._form')
-    
+        <button type="submit">更改</button>
     </form>
 @endsection

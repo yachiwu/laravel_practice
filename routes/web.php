@@ -16,7 +16,7 @@ Route::get('/', function () {
 })->name('welcome');
 Route::get('/', 'TestController@welcome')->name('welcome');
 // 除了destroy這個action不要外其他action都要
-Route::resource('/posts', 'PostController')->except(['destroy']);
+Route::resource('/posts', 'PostController');
 
 
 Auth::routes();

@@ -74,5 +74,12 @@ class PostController extends Controller
         //
     }
 
+    public function destroy(Request $request,$id)
+    {
+        BlogPost::destroy($id);
+        $request->session()->flash('status','delete');
+        return redirect(route('posts.index'));
+        //
+    }
    
 }
